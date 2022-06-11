@@ -4,6 +4,7 @@
   "description": "Express backend for maths quiz game",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rachel S",
