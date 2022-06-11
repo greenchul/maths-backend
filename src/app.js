@@ -32,7 +32,7 @@ app.get("/users", (request, response) => {
   User.find({}, (error, users) => {
     if (error) {
       console.log(error);
-      response.status(404).send("There has been an error");
+      response.status(500).send("There has been an error");
     } else {
       console.log(users);
       response.status(200).json(users);
@@ -42,7 +42,6 @@ app.get("/users", (request, response) => {
 
 app.get("/users/:user", (request, response) => {
   const { user } = request.params;
-  console.log(user);
   User.find({ user: user }, (error, users) => {
     if (error) {
       console.log(error);
