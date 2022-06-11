@@ -23,7 +23,19 @@ app.post("/users", (request, response) => {
       response.status(500).send("There has been an error");
     } else {
       console.log(user);
-      response.status(201).send(user);
+      response.status(201).json(user);
+    }
+  });
+});
+
+app.get("/users", (request, response) => {
+  User.find({}, (error, users) => {
+    if (error) {
+      console.log(error);
+      response.status(404).send("There has been an error");
+    } else {
+      console.log(users);
+      response.status(200).json(users);
     }
   });
 });
