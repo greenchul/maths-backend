@@ -40,4 +40,23 @@ app.get("/users", (request, response) => {
   });
 });
 
+app.get("/users/:user", (request, response) => {
+  const { user } = request.params;
+  console.log(user);
+  User.find({ user: user }, (error, users) => {
+    if (error) {
+      console.log(error);
+      response.status(500).send("There has been an error");
+    } else {
+      console.log(users);
+      console.log(users.length);
+      if (users.length === 0) {
+        response.sendStatus(404);
+      } else {
+        response.status(200).json(users);
+      }
+    }
+  });
+});
+
 module.exports = app;
